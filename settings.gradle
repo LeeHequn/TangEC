@@ -1,1 +1,1 @@
-include ':app', ':latte-annotations', ':latte-core', ':latte-ec', ':latte-compiler'
+include ':tang', ':latte-annotations', ':latte-core', ':latte-ec', ':latte-compiler'
