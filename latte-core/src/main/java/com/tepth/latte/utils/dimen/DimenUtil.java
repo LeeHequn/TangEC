@@ -1,4 +1,4 @@
-package com.tepth.latte.utils;
+package com.tepth.latte.utils.dimen;
 
 import android.content.res.Resources;
 import android.util.DisplayMetrics;

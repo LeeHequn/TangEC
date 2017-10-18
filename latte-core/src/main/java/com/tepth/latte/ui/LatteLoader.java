@@ -7,7 +7,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.tepth.latte.R;
-import com.tepth.latte.utils.DimenUtil;
+import com.tepth.latte.utils.dimen.DimenUtil;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;

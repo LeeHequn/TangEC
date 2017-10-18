@@ -7,6 +7,7 @@ import com.tepth.latte.net.callback.IFailure;
 import com.tepth.latte.net.callback.IRequest;
 import com.tepth.latte.net.callback.ISuccess;
 import com.tepth.latte.net.callback.RequestCallbacks;
+import com.tepth.latte.net.download.DownloadHandler;
 import com.tepth.latte.ui.LatteLoader;
 import com.tepth.latte.ui.LoaderStyle;
 
@@ -31,6 +32,9 @@ public class RestClient {
     private final String URL;
     private static final WeakHashMap<String, Object> PARAMS = RestCreator.getParams();
     private final IRequest REQUEST;
+    private final String DOWNLOAD_DIR;
+    private final String EXTENSION;
+    private final String NAME;
     private final ISuccess SUCCESS;
     private final IFailure FAILURE;
     private final IError ERROR;
@@ -48,6 +52,9 @@ public class RestClient {
                       IError error,
                       RequestBody body,
                       File file,
+                      String dir,
+                      String extension,
+                      String name,
                       Context context,
                       LoaderStyle loaderStyle) {
         this.URL = url;
@@ -58,6 +65,9 @@ public class RestClient {
         this.ERROR = error;
         this.BODY = body;
         this.FILE = file;
+        this.DOWNLOAD_DIR = dir;
+        this.EXTENSION = extension;
+        this.NAME = name;
         this.CONTEXT = context;
         this.LOADERSYTLE = loaderStyle;
     }
@@ -159,4 +169,7 @@ public class RestClient {
         request(HttpMethod.DELETE);
     }
 
+    public final void download() {
+        new DownloadHandler(URL, REQUEST, DOWNLOAD_DIR, EXTENSION, NAME, SUCCESS, FAILURE, ERROR).handlerDownload();
+    }
 }
