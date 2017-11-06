@@ -11,15 +11,30 @@ import butterknife.Unbinder;
 import me.yokeyword.fragmentation_swipeback.SwipeBackFragment;
 
 /**
- * Created by LHQ on 2017/9/29.
+ * 基本类Delegate
+ *
+ * @author Hequn.Lee
+ * @date 2017/11/06
  */
 
+@SuppressWarnings("ALL")
 public abstract class BaseDelegate extends SwipeBackFragment {
 
     private Unbinder mUnbinder = null;
 
+    /**
+     * 设置布局
+     *
+     * @return 返回布局
+     */
     public abstract Object setLayout();
 
+    /**
+     * 绑定视图
+     *
+     * @param savedInstanceState 存储的Bundle
+     * @param rootView           根视图
+     */
     public abstract void onBindView(@Nullable Bundle savedInstanceState, View rootView);
 
     @Nullable
@@ -41,7 +56,8 @@ public abstract class BaseDelegate extends SwipeBackFragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        if (mUnbinder != null)
+        if (mUnbinder != null) {
             mUnbinder.unbind();
+        }
     }
 }

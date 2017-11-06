@@ -1,8 +1,11 @@
 package com.tepth.latte.delegates;
 
 /**
- * Created by LHQ on 2017/9/29.
+ * 权限检查的基类Delegate
+ *
+ * @author Hequn.Lee
+ * @date 2017/11/06
  */
 
-public abstract class PermissionCheckerDelegate extends BaseDelegate{
+public abstract class PermissionCheckerDelegate extends BaseDelegate {
 }

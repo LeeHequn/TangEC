@@ -32,28 +32,48 @@ import java.util.Locale;
 
 /**
  * 文件工具类
- * Created by Hequn.Lee on 2017/10/17.
+ *
+ * @author Hequn.Lee
+ * @date 2017/11/06
  */
 
 @SuppressWarnings("WeakerAccess")
 public class FileUtil {
-    //格式化的模板
+    /**
+     * 格式化的模板
+     */
     private static final String TIME_FORMAT = "_yyyyMMdd_HHmmss";
 
     private static final String SDCARD_DIR =
             Environment.getExternalStorageDirectory().getPath();
 
-    //默认本地上传图片目录
+    /**
+     * 默认本地上传图片目录
+     */
     public static final String UPLOAD_PHOTO_DIR =
             Environment.getExternalStorageDirectory().getPath() + "/a_upload_photos/";
 
-    //网页缓存地址
+    /**
+     * 网页缓存地址
+     */
     public static final String WEB_CACHE_DIR =
             Environment.getExternalStorageDirectory().getPath() + "/app_web_cache/";
 
-    //系统相机目录
+    /**
+     * 系统相机目录
+     */
     public static final String CAMERA_PHOTO_DIR =
             Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getPath() + "/Camera/";
+
+    /**
+     * 应用APK的后缀名
+     */
+    public static final String APK = "apk";
+
+    /**
+     * Android4.4的版本号
+     */
+    public static final int KitKat_VIRSION = 19;
 
     private static String getTimeFormatName(String timeFormatHeader) {
         final Date date = new Date(System.currentTimeMillis());
@@ -92,13 +112,23 @@ public class FileUtil {
         return createFile(sdcardDirName, fileName);
     }
 
-    //获取文件的MIME
+    /**
+     * 获取文件的MIME
+     *
+     * @param filePath 文件路径
+     * @return 返回文件的MIME值
+     */
     public static String getMimeType(String filePath) {
         final String extension = getExtension(filePath);
         return MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension);
     }
 
-    //获取文件的后缀名
+    /**
+     * 获取文件的后缀名
+     *
+     * @param filePath 文件路径
+     * @return 返回文件的后缀名
+     */
     public static String getExtension(String filePath) {
         String suffix = "";
         final File file = new File(filePath);
@@ -130,7 +160,8 @@ public class FileUtil {
         try {
             fos = new FileOutputStream(fileName);
             bos = new BufferedOutputStream(fos);
-            mBitmap.compress(Bitmap.CompressFormat.JPEG, compress, bos);// 把数据写入文件
+            // 把数据写入文件
+            mBitmap.compress(Bitmap.CompressFormat.JPEG, compress, bos);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } finally {
@@ -169,7 +200,7 @@ public class FileUtil {
             fos = new FileOutputStream(file);
             bos = new BufferedOutputStream(fos);
 
-            byte data[] = new byte[1024 * 4];
+            byte[] data = new byte[1024 * 4];
 
             int count;
             while ((count = bis.read(data)) != -1) {
@@ -213,7 +244,7 @@ public class FileUtil {
             fos = new FileOutputStream(file);
             bos = new BufferedOutputStream(fos);
 
-            byte data[] = new byte[1024 * 4];
+            byte[] data = new byte[1024 * 4];
 
             int count;
             while ((count = bis.read(data)) != -1) {
@@ -250,14 +281,14 @@ public class FileUtil {
      * 通知系统刷新系统相册，使照片展现出来
      */
     private static void refreshDCIM() {
-        if (Build.VERSION.SDK_INT >= 19) {
+        if (Build.VERSION.SDK_INT >= KitKat_VIRSION) {
             //兼容android4.4版本，只扫描存放照片的目录
-            MediaScannerConnection.scanFile(Latte.getApplication(),
+            MediaScannerConnection.scanFile(Latte.getApplicationContext(),
                     new String[]{Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getPath()},
                     null, null);
         } else {
             //扫描整个SD卡来更新系统图库，当文件很多时用户体验不佳，且不适合4.4以上版本
-            Latte.getApplication().sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED, Uri.parse("file://" +
+            Latte.getApplicationContext().sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED, Uri.parse("file://" +
                     Environment.getExternalStorageDirectory())));
         }
     }
@@ -266,7 +297,7 @@ public class FileUtil {
      * 读取raw目录中的文件,并返回为字符串
      */
     public static String getRawFile(int id) {
-        final InputStream is = Latte.getApplication().getResources().openRawResource(id);
+        final InputStream is = Latte.getApplicationContext().getResources().openRawResource(id);
         final BufferedInputStream bis = new BufferedInputStream(is);
         final InputStreamReader isr = new InputStreamReader(bis);
         final BufferedReader br = new BufferedReader(isr);
@@ -293,12 +324,15 @@ public class FileUtil {
 
 
     public static void setIconFont(String path, TextView textView) {
-        final Typeface typeface = Typeface.createFromAsset(Latte.getApplication().getAssets(), path);
+        final Typeface typeface = Typeface.createFromAsset(Latte.getApplicationContext().getAssets(), path);
         textView.setTypeface(typeface);
     }
 
     /**
      * 读取assets目录下的文件,并返回字符串
+     *
+     * @param name 文件名
+     * @return 返回文件字符串
      */
     public static String getAssetsFile(String name) {
         InputStream is = null;
@@ -306,7 +340,7 @@ public class FileUtil {
         InputStreamReader isr = null;
         BufferedReader br = null;
         StringBuilder stringBuilder = null;
-        final AssetManager assetManager = Latte.getApplication().getAssets();
+        final AssetManager assetManager = Latte.getApplicationContext().getAssets();
         try {
             is = assetManager.open(name);
             bis = new BufferedInputStream(is);
@@ -346,12 +380,14 @@ public class FileUtil {
     }
 
     public static String getRealFilePath(final Context context, final Uri uri) {
-        if (null == uri) return null;
+        if (null == uri) {
+            return null;
+        }
         final String scheme = uri.getScheme();
         String data = null;
-        if (scheme == null)
+        if (scheme == null) {
             data = uri.getPath();
-        else if (ContentResolver.SCHEME_FILE.equals(scheme)) {
+        } else if (ContentResolver.SCHEME_FILE.equals(scheme)) {
             data = uri.getPath();
         } else if (ContentResolver.SCHEME_CONTENT.equals(scheme)) {
             final Cursor cursor = context.getContentResolver().query(uri, new String[]{MediaStore.Images.ImageColumns.DATA}, null, null, null);

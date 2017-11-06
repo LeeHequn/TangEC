@@ -2,8 +2,11 @@ package com.tepth.latte.ec.icon;
 
 import com.joanzapata.iconify.Icon;
 
-/** 自定义的图标库枚举
- * Created by LHQ on 2017/9/29.
+/**
+ * 自定义的图标库枚举
+ *
+ * @author Hequn.Lee
+ * @date 2017/11/06
  */
 
 public enum EcIcons implements Icon {

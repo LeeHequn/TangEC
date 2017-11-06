@@ -17,9 +17,12 @@ import okhttp3.RequestBody;
 
 /**
  * 构建网络请求参数
- * Created by Hequn.Lee on 2017/10/9.
+ *
+ * @author Hequn.Lee
+ * @date 2017/11/06
  */
 
+@SuppressWarnings("ALL")
 public class RestClientBuilder {
 
     private String mUrl = null;

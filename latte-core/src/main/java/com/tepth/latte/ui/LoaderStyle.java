@@ -1,7 +1,10 @@
 package com.tepth.latte.ui;
 
 /**
- * Created by Hequn.Lee on 2017/10/13.
+ * 菊花样式枚举类
+ *
+ * @author Hequn.Lee
+ * @date 2017/11/06
  */
 
 @SuppressWarnings({"unused", "DefaultFileTemplate"})

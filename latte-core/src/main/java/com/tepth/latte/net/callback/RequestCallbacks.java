@@ -12,7 +12,9 @@ import retrofit2.Response;
 
 /**
  * 网络请求回调
- * Created by Hequn.Lee on 2017/10/9.
+ *
+ * @author Hequn.Lee
+ * @date 2017/11/06
  */
 
 public class RequestCallbacks implements Callback<String> {
@@ -21,7 +23,10 @@ public class RequestCallbacks implements Callback<String> {
     private final IFailure FAILURE;
     private final IError ERROR;
     private final LoaderStyle LOADER_STYLE;
-    private static final Handler HANDLER = new Handler();//Handler尽量声明成static类型，防止内存泄漏
+    /**
+     * Handler尽量声明成static类型，防止内存泄漏
+     */
+    private static final Handler HANDLER = new Handler();
 
     public RequestCallbacks(IRequest request, ISuccess success, IFailure failure, IError error, LoaderStyle style) {
         this.REQUEST = request;
@@ -33,8 +38,10 @@ public class RequestCallbacks implements Callback<String> {
 
     @Override
     public void onResponse(@NonNull Call<String> call, @NonNull Response<String> response) {
-        if (response.isSuccessful()) {//判断response执行成功了
-            if (call.isExecuted()) {//call是否被执行过了
+        //判断response执行成功了
+        if (response.isSuccessful()) {
+            //call是否被执行过了
+            if (call.isExecuted()) {
                 if (SUCCESS != null) {
                     SUCCESS.onSuccess(response.body());
                 }

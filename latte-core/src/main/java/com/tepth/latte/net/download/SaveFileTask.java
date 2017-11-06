@@ -16,7 +16,9 @@ import okhttp3.ResponseBody;
 
 /**
  * 文件下载，APK自动安装
- * Created by Hequn.Lee on 2017/10/17.
+ *
+ * @author Hequn.Lee
+ * @date 2017/11/06
  */
 
 @SuppressWarnings("WeakerAccess")
@@ -37,10 +39,10 @@ public class SaveFileTask extends AsyncTask<Object, Void, File> {
         final ResponseBody body = (ResponseBody) params[2];
         final String name = (String) params[3];
         final InputStream is = body.byteStream();
-        if (downloadDir == null || downloadDir.equals("")) {
+        if (downloadDir == null || "".equals(downloadDir)) {
             downloadDir = "down_loads";
         }
-        if (extension == null || extension.equals("")) {
+        if (extension == null || "".equals(extension)) {
             extension = "";
         }
         if (name == null) {
@@ -68,12 +70,12 @@ public class SaveFileTask extends AsyncTask<Object, Void, File> {
      * @param file APK文件
      */
     private void autoInstallApk(File file) {
-        if (FileUtil.getExtension(file.getPath()).equals("apk")) {
+        if (FileUtil.APK.equals(FileUtil.getExtension(file.getPath()))) {
             final Intent install = new Intent();
             install.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             install.setAction(Intent.ACTION_VIEW);
             install.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
-            Latte.getApplication().startActivity(install);
+            Latte.getApplicationContext().startActivity(install);
         }
     }
 }

@@ -17,7 +17,9 @@ import retrofit2.Response;
 
 /**
  * 下载文件的Handler
- * Created by Hequn.Lee on 2017/10/17.
+ *
+ * @author Hequn.Lee
+ * @date 2017/11/06
  */
 
 @SuppressWarnings("NullableProblems")
@@ -63,7 +65,8 @@ public class DownloadHandler {
                         if (response.isSuccessful()) {
                             final ResponseBody responseBody = response.body();
                             final SaveFileTask task = new SaveFileTask(REQUEST, SUCCESS);
-                            task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,//用线程池来执行
+                            //用线程池来执行
+                            task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,
                                     DOWNLOAD_DIR,
                                     EXTENSION,
                                     responseBody,

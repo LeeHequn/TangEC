@@ -2,25 +2,30 @@ package com.tepth.latte.app;
 
 import android.content.Context;
 
-import java.util.HashMap;
-//import java.util.WeakHashMap;
-
 /**
  * 全局类Latte
- * Created by LHQ on 2017/9/28.
+ *
+ * @author Hequn.Lee
+ * @date 2017/11/06
  */
-
+@SuppressWarnings("ALL")
 public final class Latte {
     public static Configurator init(Context context) {
-        getConfigurations().put(ConfigType.APPLICATION_CONTEXT.name(), context.getApplicationContext());
+        Configurator.getInstance()
+                .getLatteConfigs()
+                .put(ConfigType.APPLICATION_CONTEXT, context.getApplicationContext());
         return Configurator.getInstance();
     }
 
-    public static HashMap<String, Object> getConfigurations() {
-        return Configurator.getInstance().getLatteConfigs();
+    public static Configurator getConfigurator() {
+        return Configurator.getInstance();
     }
 
-    public static Context getApplication() {
-        return (Context) getConfigurations().get(ConfigType.APPLICATION_CONTEXT.name());
+    public static <T> T getConfiguration(Object key) {
+        return getConfigurator().getConfiguration(key);
+    }
+
+    public static Context getApplicationContext() {
+        return getConfiguration(ConfigType.APPLICATION_CONTEXT);
     }
 }

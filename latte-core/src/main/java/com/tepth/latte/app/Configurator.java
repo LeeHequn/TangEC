@@ -5,25 +5,33 @@ import com.joanzapata.iconify.Iconify;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-//import java.util.WeakHashMap;
 
-/** 配置类
- * Created by LHQ on 2017/9/28.
+import okhttp3.Interceptor;
+
+/**
+ * 配置类
+ *
+ * @author Hequn.Lee
+ * @date 2017/11/06
  */
-
+@SuppressWarnings("ALL")
 public class Configurator {
-    private static final HashMap<String, Object> LATTE_CONFIGS = new HashMap<>();//之所以不用WeakHashMap作为配置项的缓存，是因为WeakHashMap当系统不使用它的时候会回收里里面的键值对，所以用HashMap
+    /**
+     * 之所以不用WeakHashMap作为配置项的缓存，是因为WeakHashMap当系统不使用它的时候会回收里里面的键值对，所以用HashMap
+     */
+    private static final HashMap<Object, Object> LATTE_CONFIGS = new HashMap<>();
     private static final ArrayList<IconFontDescriptor> ICONS = new ArrayList<>();
+    private static final ArrayList<Interceptor> INTERCEPTORS = new ArrayList<>();
 
     private Configurator() {
-        LATTE_CONFIGS.put(ConfigType.CONFIG_READY.name(), false);
+        LATTE_CONFIGS.put(ConfigType.CONFIG_READY, false);
     }
 
     public static Configurator getInstance() {
         return Holder.INSTANCE;
     }
 
-    final HashMap<String, Object> getLatteConfigs() {
+    final HashMap<Object, Object> getLatteConfigs() {
         return LATTE_CONFIGS;
     }
 
@@ -33,7 +41,7 @@ public class Configurator {
 
     public final void Configure() {
         initIcons();
-        LATTE_CONFIGS.put(ConfigType.CONFIG_READY.name(), true);
+        LATTE_CONFIGS.put(ConfigType.CONFIG_READY, true);
     }
 
     private void initIcons() {
@@ -46,12 +54,24 @@ public class Configurator {
     }
 
     public final Configurator withApiHost(String host) {
-        LATTE_CONFIGS.put(ConfigType.API_HOST.name(), host);
+        LATTE_CONFIGS.put(ConfigType.API_HOST, host);
         return this;
     }
 
     public final Configurator withIcon(IconFontDescriptor descriptor) {
         ICONS.add(descriptor);
+        return this;
+    }
+
+    public final Configurator withInterceptor(Interceptor interceptor) {
+        INTERCEPTORS.add(interceptor);
+        LATTE_CONFIGS.put(ConfigType.INTERCEPTOR, INTERCEPTORS);
+        return this;
+    }
+
+    public final Configurator withInterceptors(ArrayList<Interceptor> interceptors) {
+        INTERCEPTORS.addAll(interceptors);
+        LATTE_CONFIGS.put(ConfigType.INTERCEPTOR, INTERCEPTORS);
         return this;
     }
 
@@ -63,8 +83,12 @@ public class Configurator {
     }
 
     @SuppressWarnings("unchecked")
-    final <T> T getConfiguration(Enum<ConfigType> key) {
+    final <T> T getConfiguration(Object key) {
         checkConfiguration();
-        return (T) LATTE_CONFIGS.get(key.name());
+        final Object value = LATTE_CONFIGS.get(key);
+        if (value == null) {
+            throw new NullPointerException(key.toString() + " IS NULL");
+        }
+        return (T) LATTE_CONFIGS.get(key);
     }
 }

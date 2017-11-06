@@ -2,7 +2,9 @@ package com.tepth.latte.net;
 
 /**
  * HTTP请求枚举
- * Created by Hequn.Lee on 2017/10/9.
+ *
+ * @author Hequn.Lee
+ * @date 2017/11/06
  */
 
 @SuppressWarnings("WeakerAccess")

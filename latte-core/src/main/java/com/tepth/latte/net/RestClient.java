@@ -23,7 +23,9 @@ import retrofit2.Callback;
 
 /**
  * 网络请求方法
- * Created by LHQ on 2017/9/29.
+ *
+ * @author Hequn.Lee
+ * @date 2017/11/06
  */
 
 @SuppressWarnings({"WeakerAccess", "UnusedAssignment", "unused"})
@@ -143,7 +145,8 @@ public class RestClient {
     }
 
     public final void post() {
-        if (BODY == null) {//采用的是传参的POST请求
+        //采用的是传参的POST请求
+        if (BODY == null) {
             request(HttpMethod.POST);
         } else {
             if (!PARAMS.isEmpty()) {
@@ -155,7 +158,8 @@ public class RestClient {
     }
 
     public final void put() {
-        if (BODY == null) {//采用的是传参的POST请求
+        //采用的是传参的POST请求
+        if (BODY == null) {
             request(HttpMethod.PUT);
         } else {
             if (!PARAMS.isEmpty()) {

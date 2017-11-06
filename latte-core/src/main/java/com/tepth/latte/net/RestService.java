@@ -21,7 +21,9 @@ import retrofit2.http.Url;
 
 /**
  * 网络请求框架工具方法
- * Created by LHQ on 2017/9/29.
+ *
+ * @author Hequn.Lee
+ * @date 2017/11/06
  */
 
 @SuppressWarnings("WeakerAccess")

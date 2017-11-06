@@ -11,10 +11,17 @@ import me.yokeyword.fragmentation.SupportActivity;
 
 /**
  * Activity容器
- * Created by LHQ on 2017/9/29.
+ *
+ * @author Hequn.Lee
+ * @date 2017/11/06
  */
 
-public abstract class ProxyActivity extends SupportActivity {
+public abstract class BaseActivity extends SupportActivity {
+    /**
+     * 设置根Delegate
+     *
+     * @return 返回Delegate
+     */
     public abstract LatteDelegate setRootDelegate();
 
     @Override

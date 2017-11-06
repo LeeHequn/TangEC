@@ -13,7 +13,9 @@ import com.tepth.latte.net.callback.ISuccess;
 
 /**
  * 项目的Delegate
- * Created by LHQ on 2017/9/29.
+ *
+ * @author Hequn.Lee
+ * @date 2017/11/06
  */
 
 public class TangDelegate extends LatteDelegate {
@@ -29,7 +31,7 @@ public class TangDelegate extends LatteDelegate {
 
     private void testRestClient() {
         RestClient.builder()
-                .url("http://news.baidu.com/")
+                .url("http://127.0.0.1/index")
                 .loader(getContext())
                 .success(new ISuccess() {
                     @Override
