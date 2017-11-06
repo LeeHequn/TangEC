@@ -3,6 +3,7 @@ package com.tepth.tangec;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.Toast;
 
 import com.tepth.latte.delegates.LatteDelegate;
 import com.tepth.latte.net.RestClient;
@@ -33,7 +34,7 @@ public class TangDelegate extends LatteDelegate {
                 .success(new ISuccess() {
                     @Override
                     public void onSuccess(String response) {
-//                        Toast.makeText(getContext(), response, Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), response, Toast.LENGTH_LONG).show();
                     }
                 })
                 .error(new IError() {
