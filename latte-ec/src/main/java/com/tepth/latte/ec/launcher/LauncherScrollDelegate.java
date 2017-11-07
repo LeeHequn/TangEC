@@ -9,6 +9,8 @@ import com.bigkoo.convenientbanner.listener.OnItemClickListener;
 import com.tepth.latte.delegates.LatteDelegate;
 import com.tepth.latte.ec.R;
 import com.tepth.latte.ui.launcher.LauncherHolderCreator;
+import com.tepth.latte.ui.launcher.ScollLauncherTag;
+import com.tepth.latte.utils.storage.LattePreference;
 
 import java.util.ArrayList;
 
@@ -40,7 +42,7 @@ public class LauncherScrollDelegate extends LatteDelegate implements OnItemClick
 
     @Override
     public Object setLayout() {
-        mConvenientBanner = new ConvenientBanner<Integer>(getContext());
+        mConvenientBanner = new ConvenientBanner<>(getContext());
         return mConvenientBanner;
     }
 
@@ -51,6 +53,10 @@ public class LauncherScrollDelegate extends LatteDelegate implements OnItemClick
 
     @Override
     public void onItemClick(int position) {
-
+        //如果点击的是最后一个图片
+        if (position == INTEGERS.size() - 1) {
+            LattePreference.setAppFlag(ScollLauncherTag.HAS_FIRST_LAUNCHERAPP.name(), true);
+            //检查用户是否登陆
+        }
     }
 }

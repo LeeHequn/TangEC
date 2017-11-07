@@ -8,6 +8,8 @@ import android.view.View;
 import com.tepth.latte.delegates.LatteDelegate;
 import com.tepth.latte.ec.R;
 import com.tepth.latte.ec.R2;
+import com.tepth.latte.ui.launcher.ScollLauncherTag;
+import com.tepth.latte.utils.storage.LattePreference;
 import com.tepth.latte.utils.timer.BaseTimerTask;
 import com.tepth.latte.utils.timer.ITimerListener;
 
@@ -37,7 +39,11 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
 
     @OnClick(R2.id.tv_launcher_timer)
     void onClickTimerView() {
-
+        if (mScheduledExecutorService != null) {
+            mScheduledExecutorService.shutdownNow();
+            mScheduledExecutorService = null;
+            checkIsShowScroll();
+        }
     }
 
     private void initTimer() {
@@ -56,6 +62,17 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
         initTimer();
     }
 
+    /**
+     * 判断是否显示滑动页面
+     */
+    private void checkIsShowScroll() {
+        if (!LattePreference.getAppFlag(ScollLauncherTag.HAS_FIRST_LAUNCHERAPP.name())) {
+            start(new LauncherScrollDelegate(), SINGLETASK);
+        } else {
+            //检查用户是否登陆
+        }
+    }
+
     @Override
     public void onTimer() {
         getBaseActivity().runOnUiThread(new Runnable() {
@@ -68,6 +85,7 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
                         if (mScheduledExecutorService != null) {
                             mScheduledExecutorService.shutdownNow();
                             mScheduledExecutorService = null;
+                            checkIsShowScroll();
                         }
                     }
                 }
