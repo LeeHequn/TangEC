@@ -6,7 +6,7 @@ import android.support.v7.app.ActionBar;
 
 import com.tepth.latte.activities.BaseActivity;
 import com.tepth.latte.delegates.LatteDelegate;
-import com.tepth.latte.ec.sign.SignInDelegate;
+import com.tepth.latte.ec.sign.SignUpDelegate;
 
 /**
  * 主页Activity
@@ -27,6 +27,6 @@ public class TangActivity extends BaseActivity {
 
     @Override
     public LatteDelegate setRootDelegate() {
-        return new SignInDelegate();
+        return new SignUpDelegate();
     }
 }

@@ -3,7 +3,7 @@ package com.tepth.latte.ui.launcher;
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
 
 /**
- * Description:
+ * Description:启动图片Holder创建者
  *
  * @author Hequn.Lee
  * @date 2017/11/7

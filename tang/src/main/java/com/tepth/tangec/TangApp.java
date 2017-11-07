@@ -5,6 +5,7 @@ import android.app.Application;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.tepth.latte.app.Latte;
+import com.tepth.latte.ec.database.DatabaseManager;
 import com.tepth.latte.ec.icon.FontEcModule;
 import com.tepth.latte.net.interceptors.DebugInterceptor;
 
@@ -19,6 +20,7 @@ public class TangApp extends Application {
 
     @Override
     public void onCreate() {
+        super.onCreate();
         Latte.init(this)
                 .withApiHost("http://127.0.0.1/")
                 //引入官方图标库
@@ -27,8 +29,9 @@ public class TangApp extends Application {
                 .withIcon(new FontEcModule())
                 .withInterceptor(new DebugInterceptor("index", R.raw.test))
                 .Configure();//初始化配置文件
+        //初始化数据库
+        DatabaseManager.getInstance().init(this);
         //配置Bugly
         CrashReport.initCrashReport(getApplicationContext(), "7049f826d7", true);
-        super.onCreate();
     }
 }

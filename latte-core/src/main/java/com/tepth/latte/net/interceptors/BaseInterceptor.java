@@ -8,7 +8,7 @@ import okhttp3.Interceptor;
 import okhttp3.Request;
 
 /**
- * Description ：
+ * Description:拦截器基类
  *
  * @author Hequn.Lee
  * @date 2017/11/06

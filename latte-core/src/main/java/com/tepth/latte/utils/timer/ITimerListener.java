@@ -1,7 +1,7 @@
 package com.tepth.latte.utils.timer;
 
 /**
- * Description:
+ * Description:定时器回调
  *
  * @author Hequn.Lee
  * @date 2017/11/7

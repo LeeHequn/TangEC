@@ -7,7 +7,7 @@ import android.view.View;
 import com.bigkoo.convenientbanner.holder.Holder;
 
 /**
- * Description:
+ * Description:启动图片Holder
  *
  * @author Hequn.Lee
  * @date 2017/11/7
