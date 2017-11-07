@@ -73,7 +73,7 @@ public class FileUtil {
     /**
      * Android4.4的版本号
      */
-    public static final int KitKat_VIRSION = 19;
+    public static final int KITKAT_VIRSION = 19;
 
     private static String getTimeFormatName(String timeFormatHeader) {
         final Date date = new Date(System.currentTimeMillis());
@@ -281,7 +281,7 @@ public class FileUtil {
      * 通知系统刷新系统相册，使照片展现出来
      */
     private static void refreshDCIM() {
-        if (Build.VERSION.SDK_INT >= KitKat_VIRSION) {
+        if (Build.VERSION.SDK_INT >= KITKAT_VIRSION) {
             //兼容android4.4版本，只扫描存放照片的目录
             MediaScannerConnection.scanFile(Latte.getApplicationContext(),
                     new String[]{Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getPath()},
