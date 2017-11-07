@@ -4,8 +4,8 @@ import android.content.Context;
 
 import com.tepth.latte.net.HttpMethod;
 import com.tepth.latte.net.RestCreator;
-import com.tepth.latte.ui.LatteLoader;
-import com.tepth.latte.ui.LoaderStyle;
+import com.tepth.latte.ui.loader.LatteLoader;
+import com.tepth.latte.ui.loader.LoaderStyle;
 
 import java.io.File;
 import java.util.Map;

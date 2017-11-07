@@ -6,7 +6,7 @@ import com.tepth.latte.net.callback.IError;
 import com.tepth.latte.net.callback.IFailure;
 import com.tepth.latte.net.callback.IRequest;
 import com.tepth.latte.net.callback.ISuccess;
-import com.tepth.latte.ui.LoaderStyle;
+import com.tepth.latte.ui.loader.LoaderStyle;
 
 import java.io.File;
 import java.util.Map;

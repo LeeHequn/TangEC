@@ -1,4 +1,4 @@
-package com.tepth.latte.ui;
+package com.tepth.latte.ui.loader;
 
 /**
  * 菊花样式枚举类

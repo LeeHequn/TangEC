@@ -3,8 +3,8 @@ package com.tepth.latte.net.callback;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 
-import com.tepth.latte.ui.LatteLoader;
-import com.tepth.latte.ui.LoaderStyle;
+import com.tepth.latte.ui.loader.LatteLoader;
+import com.tepth.latte.ui.loader.LoaderStyle;
 
 import retrofit2.Call;
 import retrofit2.Callback;

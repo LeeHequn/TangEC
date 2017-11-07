@@ -1,4 +1,4 @@
-package com.tepth.latte.ui;
+package com.tepth.latte.ui.loader;
 
 import android.content.Context;
 

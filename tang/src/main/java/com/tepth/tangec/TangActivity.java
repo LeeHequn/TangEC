@@ -6,7 +6,7 @@ import android.support.v7.app.ActionBar;
 
 import com.tepth.latte.activities.BaseActivity;
 import com.tepth.latte.delegates.LatteDelegate;
-import com.tepth.latte.ec.launcher.LauncherDelegate;
+import com.tepth.latte.ec.launcher.LauncherScrollDelegate;
 
 /**
  * 主页Activity
@@ -27,6 +27,6 @@ public class TangActivity extends BaseActivity {
 
     @Override
     public LatteDelegate setRootDelegate() {
-        return new LauncherDelegate();
+        return new LauncherScrollDelegate();
     }
 }

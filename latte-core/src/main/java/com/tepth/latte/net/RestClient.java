@@ -8,8 +8,8 @@ import com.tepth.latte.net.callback.IRequest;
 import com.tepth.latte.net.callback.ISuccess;
 import com.tepth.latte.net.callback.RequestCallbacks;
 import com.tepth.latte.net.download.DownloadHandler;
-import com.tepth.latte.ui.LatteLoader;
-import com.tepth.latte.ui.LoaderStyle;
+import com.tepth.latte.ui.loader.LatteLoader;
+import com.tepth.latte.ui.loader.LoaderStyle;
 
 import java.io.File;
 import java.util.Map;
