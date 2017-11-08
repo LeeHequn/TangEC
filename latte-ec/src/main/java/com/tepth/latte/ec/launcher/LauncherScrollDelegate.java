@@ -1,14 +1,19 @@
 package com.tepth.latte.ec.launcher;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.listener.OnItemClickListener;
+import com.tepth.latte.app.AccountManager;
+import com.tepth.latte.app.IUserChecker;
 import com.tepth.latte.delegates.LatteDelegate;
 import com.tepth.latte.ec.R;
+import com.tepth.latte.ui.launcher.ILauncherListener;
 import com.tepth.latte.ui.launcher.LauncherHolderCreator;
+import com.tepth.latte.ui.launcher.OnLauncherFinishTag;
 import com.tepth.latte.ui.launcher.ScollLauncherTag;
 import com.tepth.latte.utils.storage.LattePreference;
 
@@ -25,6 +30,7 @@ public class LauncherScrollDelegate extends LatteDelegate implements OnItemClick
 
     private ConvenientBanner<Integer> mConvenientBanner = null;
     private static final ArrayList<Integer> INTEGERS = new ArrayList<>();
+    private ILauncherListener mILauncherListener = null;
 
     private void initBanner() {
         INTEGERS.add(R.mipmap.launcher_01);
@@ -38,6 +44,14 @@ public class LauncherScrollDelegate extends LatteDelegate implements OnItemClick
                 .setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.CENTER_HORIZONTAL)
                 .setOnItemClickListener(this)
                 .setCanLoop(false);
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (activity instanceof ILauncherListener) {
+            mILauncherListener = (ILauncherListener) activity;
+        }
     }
 
     @Override
@@ -57,6 +71,22 @@ public class LauncherScrollDelegate extends LatteDelegate implements OnItemClick
         if (position == INTEGERS.size() - 1) {
             LattePreference.setAppFlag(ScollLauncherTag.HAS_FIRST_LAUNCHERAPP.name(), true);
             //检查用户是否登陆
+            AccountManager.checkAccount(new IUserChecker() {
+                @Override
+                public void onSignIn() {
+                    if (mILauncherListener != null) {
+                        mILauncherListener.onLauncherFinish(OnLauncherFinishTag.SIGNED);
+                    }
+                }
+
+                @Override
+                public void onNotSignIn() {
+                    if (mILauncherListener != null) {
+                        mILauncherListener.onLauncherFinish(OnLauncherFinishTag.NOT_SIGNED);
+                    }
+                }
+            });
+
         }
     }
 }

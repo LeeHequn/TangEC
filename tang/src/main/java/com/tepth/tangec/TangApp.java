@@ -22,7 +22,7 @@ public class TangApp extends Application {
     public void onCreate() {
         super.onCreate();
         Latte.init(this)
-                .withApiHost("http://127.0.0.1/")
+                .withApiHost("http://192.168.1.25:8080/RestServer/api/")
                 //引入官方图标库
                 .withIcon(new FontAwesomeModule())
                 //引入我自定义的聚划算图标库

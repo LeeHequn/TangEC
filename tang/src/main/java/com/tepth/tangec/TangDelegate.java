@@ -36,9 +36,7 @@ public class TangDelegate extends LatteDelegate {
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
-        testRxRestClient2();
-//        testRxRestClient();
-//        testRestClient();
+
     }
 
     /**
