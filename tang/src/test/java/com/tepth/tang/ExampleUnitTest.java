@@ -1,4 +1,4 @@
-package com.tepth.tangec;
+package com.tepth.tang;
 
 import org.junit.Test;
 

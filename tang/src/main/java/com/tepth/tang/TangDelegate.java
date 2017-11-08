@@ -1,4 +1,4 @@
-package com.tepth.tangec;
+package com.tepth.tang;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

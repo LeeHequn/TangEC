@@ -1,4 +1,4 @@
-package com.tepth.tangec;
+package com.tepth.tang;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
