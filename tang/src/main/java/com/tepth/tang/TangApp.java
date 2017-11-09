@@ -28,6 +28,8 @@ public class TangApp extends Application {
                 //引入我自定义的聚划算图标库
                 .withIcon(new FontEcModule())
                 .withInterceptor(new DebugInterceptor("index", R.raw.test))
+                .withWeChatAppId("wx8ba572958ee506c3")
+                .withWeChatAppSecret("13a913b9e01201ad214069a6024d7b94")
                 .Configure();//初始化配置文件
         //初始化数据库
         DatabaseManager.getInstance().init(this);

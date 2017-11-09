@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBar;
 import android.widget.Toast;
 
 import com.tepth.latte.activities.BaseActivity;
+import com.tepth.latte.app.Latte;
 import com.tepth.latte.delegates.LatteDelegate;
 import com.tepth.latte.ec.launcher.LauncherDelegate;
 import com.tepth.latte.ec.sign.ISignListener;
@@ -28,6 +29,7 @@ public class TangActivity extends BaseActivity implements ISignListener, ILaunch
         if (actionBar != null) {
             actionBar.hide();
         }
+        Latte.getConfigurator().withActivity(this);
     }
 
     @Override
