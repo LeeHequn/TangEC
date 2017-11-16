@@ -10,7 +10,7 @@ import com.tepth.latte.activities.BaseActivity;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import me.yokeyword.fragmentation_swipeback.SwipeBackFragment;
+import me.yokeyword.fragmentation.SupportFragment;
 
 /**
  * 基本类Delegate
@@ -20,7 +20,7 @@ import me.yokeyword.fragmentation_swipeback.SwipeBackFragment;
  */
 
 @SuppressWarnings("ALL")
-public abstract class BaseDelegate extends SwipeBackFragment {
+public abstract class BaseDelegate extends SupportFragment {
 
     private Unbinder mUnbinder = null;
 

@@ -10,7 +10,7 @@ import com.tepth.latte.app.Latte;
 import com.tepth.latte.wechat.callbacks.IWeChatSignInCallback;
 
 /**
- * Description:
+ * Description:微信用户登录
  *
  * @author Hequn.Lee
  * @date 2017/11/8

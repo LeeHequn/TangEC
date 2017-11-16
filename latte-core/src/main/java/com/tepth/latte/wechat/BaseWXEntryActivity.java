@@ -57,6 +57,11 @@ public abstract class BaseWXEntryActivity extends BaseWXActivity {
         getAuth(authUrl.toString());
     }
 
+    /**
+     * 通过Auth的URL拿到accessToken
+     *
+     * @param authUrl url
+     */
     private void getAuth(String authUrl) {
         RestClient
                 .builder()
@@ -84,6 +89,11 @@ public abstract class BaseWXEntryActivity extends BaseWXActivity {
                 .get();
     }
 
+    /**
+     * 获取用户信息
+     *
+     * @param userInfoUrl 获取用户信息的URL
+     */
     private void getUserInfo(String userInfoUrl) {
         RestClient
                 .builder()
