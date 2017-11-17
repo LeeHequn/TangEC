@@ -1,8 +1,12 @@
 package com.tepth.latte.ui.refresh;
 
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.widget.Toast;
 
 import com.tepth.latte.app.Latte;
+import com.tepth.latte.net.RestClient;
+import com.tepth.latte.net.callback.IFailure;
+import com.tepth.latte.net.callback.ISuccess;
 
 /**
  * Description:刷新控件助手
@@ -11,6 +15,7 @@ import com.tepth.latte.app.Latte;
  * @date 2017/11/17
  */
 
+@SuppressWarnings("ALL")
 public class RefreshHandler implements SwipeRefreshLayout.OnRefreshListener {
 
     private final SwipeRefreshLayout REFRESH_LAYOUT;
@@ -32,6 +37,25 @@ public class RefreshHandler implements SwipeRefreshLayout.OnRefreshListener {
                 REFRESH_LAYOUT.setRefreshing(false);
             }
         }, 2000);
+    }
+
+    public void firstPage(String url) {
+        RestClient.builder()
+                .url(url)
+                .success(new ISuccess() {
+                    @Override
+                    public void onSuccess(String response) {
+                        Toast.makeText(Latte.getApplicationContext(), response, Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .failure(new IFailure() {
+                    @Override
+                    public void onFailure() {
+
+                    }
+                })
+                .builder()
+                .get();
     }
 
     @Override

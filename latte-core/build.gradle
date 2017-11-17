@@ -70,4 +70,6 @@ dependencies {
     //微信依赖(包含统计)
     //noinspection GradleDynamicVersion
     compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+    //RecyclerView解析器
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34'
 }

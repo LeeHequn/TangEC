@@ -58,6 +58,7 @@ public class IndexDelegate extends BottomItemDelegate {
                 ResourcesUtil.getColorFromResources(getContext(), android.R.color.holo_red_light)
         );
         mRefreshLayout.setProgressViewOffset(true, 120, 300);
+        mRefreshHandler.firstPage("index.php");
     }
 
     @Override
