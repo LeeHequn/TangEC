@@ -7,7 +7,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.tepth.latte.R;
-import com.tepth.latte.utils.dimen.DimenUtil;
+import com.tepth.latte.utils.resources.ResourcesUtil;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
@@ -49,8 +49,8 @@ public class LatteLoader {
         final AVLoadingIndicatorView avLoadingIndicatorView = LoaderCreator.create(type, context);
         dialog.setContentView(avLoadingIndicatorView);
 
-        int deviceHeight = DimenUtil.getScreenHeight();
-        int deviceWidth = DimenUtil.getScreenWidth();
+        int deviceHeight = ResourcesUtil.getScreenHeight();
+        int deviceWidth = ResourcesUtil.getScreenWidth();
 
         final Window dialogWindow = dialog.getWindow();
         if (dialogWindow != null) {

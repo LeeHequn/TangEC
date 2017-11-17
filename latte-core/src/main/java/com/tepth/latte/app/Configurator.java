@@ -1,6 +1,7 @@
 package com.tepth.latte.app;
 
 import android.app.Activity;
+import android.os.Handler;
 
 import com.joanzapata.iconify.IconFontDescriptor;
 import com.joanzapata.iconify.Iconify;
@@ -22,7 +23,17 @@ public class Configurator {
      * 之所以不用WeakHashMap作为配置项的缓存，是因为WeakHashMap当系统不使用它的时候会回收里里面的键值对，所以用HashMap
      */
     private static final HashMap<Object, Object> LATTE_CONFIGS = new HashMap<>();
+    /**
+     * 全局的Handler
+     */
+    private static final Handler HANDLER = new Handler();
+    /**
+     * 全局的图标库
+     */
     private static final ArrayList<IconFontDescriptor> ICONS = new ArrayList<>();
+    /**
+     * 拦截器
+     */
     private static final ArrayList<Interceptor> INTERCEPTORS = new ArrayList<>();
 
     private Configurator() {
@@ -44,6 +55,7 @@ public class Configurator {
     public final void Configure() {
         initIcons();
         LATTE_CONFIGS.put(ConfigType.CONFIG_READY, true);
+        LATTE_CONFIGS.put(ConfigType.HANDLER, HANDLER);
     }
 
     private void initIcons() {

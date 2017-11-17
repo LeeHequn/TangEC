@@ -1,6 +1,7 @@
 package com.tepth.latte.app;
 
 import android.content.Context;
+import android.os.Handler;
 
 /**
  * 全局类Latte
@@ -27,5 +28,9 @@ public final class Latte {
 
     public static Context getApplicationContext() {
         return getConfiguration(ConfigType.APPLICATION_CONTEXT);
+    }
+
+    public static Handler getHandler() {
+        return getConfiguration(ConfigType.HANDLER);
     }
 }

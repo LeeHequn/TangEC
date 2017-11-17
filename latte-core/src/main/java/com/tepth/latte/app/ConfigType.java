@@ -39,5 +39,9 @@ public enum ConfigType {
     /**
      * Activity
      */
-    ACTIVITY
+    ACTIVITY,
+    /**
+     * 全局的Handler
+     */
+    HANDLER
 }
