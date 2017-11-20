@@ -2,11 +2,9 @@ package com.tepth.latte.net.rx;
 
 import android.content.Context;
 
-import com.tepth.latte.net.RestCreator;
 import com.tepth.latte.ui.loader.LoaderStyle;
 
 import java.io.File;
-import java.util.Map;
 import java.util.WeakHashMap;
 
 import okhttp3.MediaType;
@@ -23,7 +21,7 @@ import okhttp3.RequestBody;
 public class RxRestClientBuilder {
 
     private String mUrl = null;
-    private static final Map<String, Object> PARAMS = RestCreator.getParams();
+    private final WeakHashMap<String, Object> PARAMS = new WeakHashMap<>();
     private RequestBody mBody = null;
     private LoaderStyle mLoaderStyle = null;
     private Context mContext = null;

@@ -12,7 +12,6 @@ import com.tepth.latte.ui.loader.LatteLoader;
 import com.tepth.latte.ui.loader.LoaderStyle;
 
 import java.io.File;
-import java.util.Map;
 import java.util.WeakHashMap;
 
 import okhttp3.MediaType;
@@ -32,7 +31,7 @@ import retrofit2.Callback;
 public class RestClient {
 
     private final String URL;
-    private static final WeakHashMap<String, Object> PARAMS = RestCreator.getParams();
+    private final WeakHashMap<String, Object> PARAMS;
     private final IRequest REQUEST;
     private final String DOWNLOAD_DIR;
     private final String EXTENSION;
@@ -47,7 +46,7 @@ public class RestClient {
 
 
     public RestClient(String url,
-                      Map<String, Object> params,
+                      WeakHashMap<String, Object> params,
                       IRequest request,
                       ISuccess success,
                       IFailure failure,
@@ -60,7 +59,7 @@ public class RestClient {
                       Context context,
                       LoaderStyle loaderStyle) {
         this.URL = url;
-        PARAMS.putAll(params);
+        this.PARAMS = params;
         this.REQUEST = request;
         this.SUCCESS = success;
         this.FAILURE = failure;
@@ -174,6 +173,6 @@ public class RestClient {
     }
 
     public final void download() {
-        new DownloadHandler(URL, REQUEST, DOWNLOAD_DIR, EXTENSION, NAME, SUCCESS, FAILURE, ERROR).handlerDownload();
+        new DownloadHandler(URL, PARAMS, REQUEST, DOWNLOAD_DIR, EXTENSION, NAME, SUCCESS, FAILURE, ERROR).handlerDownload();
     }
 }

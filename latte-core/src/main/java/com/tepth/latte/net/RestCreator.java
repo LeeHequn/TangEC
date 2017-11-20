@@ -5,7 +5,6 @@ import com.tepth.latte.app.Latte;
 import com.tepth.latte.net.rx.RxRestService;
 
 import java.util.ArrayList;
-import java.util.WeakHashMap;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Interceptor;
@@ -22,14 +21,6 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
  */
 @SuppressWarnings("ALL")
 public class RestCreator {
-
-    private static final class ParamsHolder {
-        public static final WeakHashMap<String, Object> PARAMS = new WeakHashMap<>();
-    }
-
-    public static WeakHashMap<String, Object> getParams() {
-        return ParamsHolder.PARAMS;
-    }
 
     private static final class RetrofitHolder {
         private static final String BASE_URL = (String) Latte.getConfiguration(ConfigType.API_HOST);

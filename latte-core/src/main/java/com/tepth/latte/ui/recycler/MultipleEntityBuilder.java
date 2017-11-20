@@ -1,9 +1,9 @@
 package com.tepth.latte.ui.recycler;
 
-import java.util.WeakHashMap;
+import java.util.LinkedHashMap;
 
 /**
- * Description:
+ * Description:Recycler数据构造者
  *
  * @author Hequn.Lee
  * @date 2017/11/17
@@ -11,9 +11,9 @@ import java.util.WeakHashMap;
 
 public class MultipleEntityBuilder {
 
-    private static final WeakHashMap<Object, Object> FIELDS = new WeakHashMap<>();
+    private static final LinkedHashMap<Object, Object> FIELDS = new LinkedHashMap<>();
 
-    public MultipleEntityBuilder() {
+    MultipleEntityBuilder() {
         //先清除之前存储的数据
         FIELDS.clear();
     }
@@ -28,8 +28,12 @@ public class MultipleEntityBuilder {
         return this;
     }
 
-    public final MultipleEntityBuilder setFields(Object key, Object value) {
-        FIELDS.put(key, value);
+    public final MultipleEntityBuilder setFields(LinkedHashMap<?, ?> map) {
+        FIELDS.putAll(map);
         return this;
+    }
+
+    public final MultipleItemEntity builder() {
+        return new MultipleItemEntity(FIELDS);
     }
 }

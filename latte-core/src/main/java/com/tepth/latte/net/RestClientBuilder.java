@@ -9,7 +9,6 @@ import com.tepth.latte.net.callback.ISuccess;
 import com.tepth.latte.ui.loader.LoaderStyle;
 
 import java.io.File;
-import java.util.Map;
 import java.util.WeakHashMap;
 
 import okhttp3.MediaType;
@@ -26,7 +25,7 @@ import okhttp3.RequestBody;
 public class RestClientBuilder {
 
     private String mUrl = null;
-    private static final Map<String, Object> PARAMS = RestCreator.getParams();
+    private final WeakHashMap<String, Object> PARAMS = new WeakHashMap<>();
     private IRequest mRequest = null;
     private ISuccess mSuccess = null;
     private IFailure mFailure = null;
