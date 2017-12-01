@@ -33,4 +33,8 @@ public abstract class BaseDataConverter {
         }
         return mJsonData;
     }
+
+    public void clearData() {
+        ENTITIES.clear();
+    }
 }

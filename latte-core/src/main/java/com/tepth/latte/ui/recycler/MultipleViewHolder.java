@@ -7,7 +7,7 @@ import com.chad.library.adapter.base.BaseViewHolder;
 /**
  * Description:基础Holder类
  *
- * @author LHQ
+ * @author Hequn.Lee
  * @date 2017/11/21
  */
 
@@ -16,7 +16,7 @@ public class MultipleViewHolder extends BaseViewHolder {
         super(view);
     }
 
-    private static MultipleViewHolder create(View view) {
+    public static MultipleViewHolder create(View view) {
         return new MultipleViewHolder(view);
     }
 }

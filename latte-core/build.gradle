@@ -72,4 +72,10 @@ dependencies {
     compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
     //RecyclerView解析器
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34'
+    //RecyclerView分割线
+    compile 'com.choices.divider:RecyclerView_Divider:1.0.0'
+    //Glide图片加载库
+    compile 'com.github.bumptech.glide:glide:4.3.1'
+    compile "com.github.bumptech.glide:okhttp3-integration:4.3.1"
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.3.1'
 }

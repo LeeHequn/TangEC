@@ -4,23 +4,17 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.AppCompatEditText;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Toast;
 
 import com.joanzapata.iconify.widget.IconTextView;
 import com.tepth.latte.delegates.bottom.BottomItemDelegate;
 import com.tepth.latte.ec.R;
 import com.tepth.latte.ec.R2;
-import com.tepth.latte.net.RestClient;
-import com.tepth.latte.net.callback.ISuccess;
-import com.tepth.latte.ui.recycler.MultipleFields;
-import com.tepth.latte.ui.recycler.MultipleItemEntity;
 import com.tepth.latte.ui.refresh.RefreshHandler;
 import com.tepth.latte.utils.resources.ResourcesUtil;
-
-import java.util.ArrayList;
 
 import butterknife.BindView;
 
@@ -52,21 +46,8 @@ public class IndexDelegate extends BottomItemDelegate {
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
-        mRefreshHandler = new RefreshHandler(mRefreshLayout);
-        RestClient.builder()
-                .url("index.php")
-                .success(new ISuccess() {
-                    @Override
-                    public void onSuccess(String response) {
-                        final IndexDataConvert convert = new IndexDataConvert();
-                        convert.setJsonData(response);
-                        final ArrayList<MultipleItemEntity> list = convert.convert();
-                        final String image = list.get(1).getField(MultipleFields.IMAGE_URL);
-                        Toast.makeText(getContext(), image, Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .builder()
-                .get();
+        mRefreshHandler = RefreshHandler.create(mRefreshLayout, mRecyclerView, new IndexDataConvert());
+
 
     }
 
@@ -83,9 +64,16 @@ public class IndexDelegate extends BottomItemDelegate {
         mRefreshHandler.firstPage("index.php");
     }
 
+    private void initRecyclerView() {
+        final GridLayoutManager manager = new GridLayoutManager(getContext(), 4);
+        mRecyclerView.setLayoutManager(manager);
+//        mRecyclerView.addItemDecoration();
+    }
+
     @Override
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
+        initRecyclerView();
         initRefreshLayout();
     }
 

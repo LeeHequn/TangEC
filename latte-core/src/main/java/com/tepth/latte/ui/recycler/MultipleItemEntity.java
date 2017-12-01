@@ -33,7 +33,7 @@ public class MultipleItemEntity implements MultiItemEntity {
         return (int) FIELDS_REFERENCE.get().get(MultipleFields.ITEM_TYPE);
     }
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({"unchecked", "WeakerAccess"})
     public final <T> T getField(Object key) {
         return (T) FIELDS_REFERENCE.get().get(key);
     }
