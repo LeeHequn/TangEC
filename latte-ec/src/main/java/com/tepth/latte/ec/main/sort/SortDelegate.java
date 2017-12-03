@@ -6,9 +6,11 @@ import android.view.View;
 
 import com.tepth.latte.delegates.bottom.BaseBottomItemDelegate;
 import com.tepth.latte.ec.R;
+import com.tepth.latte.ec.main.sort.content.ContentDelegate;
+import com.tepth.latte.ec.main.sort.list.VerticalListDelegate;
 
 /**
- * Description:
+ * Description:分类页面的Delegate
  *
  * @author Hequn.Lee
  * @date 2017/11/16
@@ -23,5 +25,13 @@ public class SortDelegate extends BaseBottomItemDelegate {
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
 
+    }
+
+    @Override
+    public void onLazyInitView(@Nullable Bundle savedInstanceState) {
+        super.onLazyInitView(savedInstanceState);
+        final VerticalListDelegate listDelegate = new VerticalListDelegate();
+        loadRootFragment(R.id.vertical_list_container, listDelegate);
+        loadRootFragment(R.id.sort_content_container, ContentDelegate.newInstance(1), false, false);
     }
 }
