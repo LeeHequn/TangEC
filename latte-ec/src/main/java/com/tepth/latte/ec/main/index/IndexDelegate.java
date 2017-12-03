@@ -13,6 +13,7 @@ import com.joanzapata.iconify.widget.IconTextView;
 import com.tepth.latte.delegates.bottom.BaseBottomItemDelegate;
 import com.tepth.latte.ec.R;
 import com.tepth.latte.ec.R2;
+import com.tepth.latte.ec.main.EcBottomDelegate;
 import com.tepth.latte.ui.refresh.RefreshHandler;
 import com.tepth.latte.utils.resources.ResourcesUtil;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
@@ -73,6 +74,8 @@ public class IndexDelegate extends BaseBottomItemDelegate {
                 .color(R.color.app_background)
                 .size(3)
                 .build());
+        final EcBottomDelegate ecBottomDelegate = getParentDelegate();
+        mRecyclerView.addOnItemTouchListener(IndexItemClickListener.create(ecBottomDelegate));
     }
 
     @Override
