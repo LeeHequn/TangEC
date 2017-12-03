@@ -8,13 +8,13 @@ import com.tepth.latte.R;
 import com.tepth.latte.delegates.LatteDelegate;
 
 /**
- * Description:
+ * Description:五个分页的Delegate基类，主要封装双击退出点击事件
  *
  * @author Hequn.Lee
  * @date 2017/11/9
  */
 
-public abstract class BottomItemDelegate extends LatteDelegate implements View.OnKeyListener {
+public abstract class BaseBottomItemDelegate extends LatteDelegate implements View.OnKeyListener {
 
     private long mExitTime = 0;
     private static final int EXIT_TIME = 2000;

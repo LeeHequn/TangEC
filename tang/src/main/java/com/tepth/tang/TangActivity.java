@@ -15,6 +15,8 @@ import com.tepth.latte.ec.sign.SignInDelegate;
 import com.tepth.latte.ui.launcher.ILauncherListener;
 import com.tepth.latte.ui.launcher.OnLauncherFinishTag;
 
+import qiu.niorgai.StatusBarCompat;
+
 /**
  * 主页Activity
  *
@@ -31,6 +33,7 @@ public class TangActivity extends BaseActivity implements ISignListener, ILaunch
             actionBar.hide();
         }
         Latte.getConfigurator().withActivity(this);
+        StatusBarCompat.translucentStatusBar(this, true);
     }
 
     @Override

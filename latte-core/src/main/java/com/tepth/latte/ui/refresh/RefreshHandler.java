@@ -61,6 +61,11 @@ public class RefreshHandler implements
         }, 2000);
     }
 
+    /**
+     * 加载第一页方法
+     *
+     * @param url 加载链接
+     */
     public void firstPage(String url) {
         BEAN.setDelayed(1000);
         RestClient.builder()

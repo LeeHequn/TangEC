@@ -9,8 +9,14 @@ import android.os.Handler;
  * @author Hequn.Lee
  * @date 2017/11/06
  */
-@SuppressWarnings("ALL")
+
 public final class Latte {
+    /**
+     * 配置文件全局初始化
+     *
+     * @param context 全局上下文
+     * @return 配置文件类
+     */
     public static Configurator init(Context context) {
         Configurator.getInstance()
                 .getLatteConfigs()

@@ -54,7 +54,7 @@ public class Configurator {
         private static final Configurator INSTANCE = new Configurator();
     }
 
-    public final void Configure() {
+    public final void configure() {
         initIcons();
         Logger.addLogAdapter(new AndroidLogAdapter());
         LATTE_CONFIGS.put(ConfigType.CONFIG_READY, true);
@@ -114,7 +114,6 @@ public class Configurator {
         }
     }
 
-    @SuppressWarnings("unchecked")
     final <T> T getConfiguration(Object key) {
         checkConfiguration();
         final Object value = LATTE_CONFIGS.get(key);

@@ -12,6 +12,7 @@ import com.tepth.latte.delegates.LatteDelegate;
 import com.tepth.latte.ec.R;
 import com.tepth.latte.ec.R2;
 import com.tepth.latte.net.RestClient;
+import com.tepth.latte.net.callback.IFailure;
 import com.tepth.latte.net.callback.ISuccess;
 import com.tepth.latte.utils.input.InputHandlerUtil;
 import com.tepth.latte.utils.log.LatteLogger;
@@ -57,6 +58,12 @@ public class SignInDelegate extends LatteDelegate {
                         public void onSuccess(String response) {
                             LatteLogger.json("USER_PROFILE", response);
                             SignHandler.onSignIn(response, mISignListener);
+                        }
+                    })
+                    .failure(new IFailure() {
+                        @Override
+                        public void onFailure() {
+
                         }
                     })
                     .builder()

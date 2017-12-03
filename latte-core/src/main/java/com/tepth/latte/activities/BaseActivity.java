@@ -30,6 +30,11 @@ public abstract class BaseActivity extends SupportActivity {
         initContainer(savedInstanceState);
     }
 
+    /**
+     * 初始化布局容器
+     *
+     * @param savedInstanceState 存储的信息
+     */
     private void initContainer(@Nullable Bundle savedInstanceState) {
         final ContentFrameLayout container = new ContentFrameLayout(this);
         container.setId(R.id.delegate_container);

@@ -10,7 +10,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 
 /**
- * Description:
+ * Description:Banner里的ImageHolder
  *
  * @author Hequn.Lee
  * @date 2017/12/1
@@ -19,6 +19,9 @@ import com.bumptech.glide.request.RequestOptions;
 public class ImageHolder implements Holder<String> {
 
     private AppCompatImageView mImageView = null;
+    /**
+     * 图片缓存策略
+     */
     private static final RequestOptions BANNER_OPTIONS = new RequestOptions()
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .dontAnimate()

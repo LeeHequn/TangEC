@@ -8,7 +8,7 @@ import com.tepth.latte.R;
 import java.util.ArrayList;
 
 /**
- * Description:
+ * Description:设置默认样式的Banner
  *
  * @author Hequn.Lee
  * @date 2017/12/1
@@ -17,8 +17,8 @@ import java.util.ArrayList;
 public class BannerCreator {
 
     public static void setDefault(ConvenientBanner<String> convenientBanner,
-                                   ArrayList<String> banners,
-                                   OnItemClickListener clickListener) {
+                                  ArrayList<String> banners,
+                                  OnItemClickListener clickListener) {
         //设置holder
         convenientBanner.setPages(new HolderCreator(), banners)
                 //设置底下的圆圈

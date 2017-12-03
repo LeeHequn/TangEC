@@ -11,6 +11,9 @@ import com.tepth.latte.utils.storage.LattePreference;
 
 public class AccountManager {
     private enum SignTag {
+        /**
+         * 用户登陆标记
+         */
         SIGN_TAG
     }
 

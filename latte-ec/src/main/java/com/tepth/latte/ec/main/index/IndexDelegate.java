@@ -10,22 +10,23 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.joanzapata.iconify.widget.IconTextView;
-import com.tepth.latte.delegates.bottom.BottomItemDelegate;
+import com.tepth.latte.delegates.bottom.BaseBottomItemDelegate;
 import com.tepth.latte.ec.R;
 import com.tepth.latte.ec.R2;
 import com.tepth.latte.ui.refresh.RefreshHandler;
 import com.tepth.latte.utils.resources.ResourcesUtil;
+import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
 import butterknife.BindView;
 
 /**
- * Description:
+ * Description:首页Delegate
  *
  * @author Hequn.Lee
  * @date 2017/11/16
  */
 
-public class IndexDelegate extends BottomItemDelegate {
+public class IndexDelegate extends BaseBottomItemDelegate {
 
     @BindView(R2.id.rv_index)
     RecyclerView mRecyclerView = null;
@@ -67,7 +68,11 @@ public class IndexDelegate extends BottomItemDelegate {
     private void initRecyclerView() {
         final GridLayoutManager manager = new GridLayoutManager(getContext(), 4);
         mRecyclerView.setLayoutManager(manager);
-//        mRecyclerView.addItemDecoration();
+        mRecyclerView.addItemDecoration(new HorizontalDividerItemDecoration
+                .Builder(getContext())
+                .color(R.color.app_background)
+                .size(3)
+                .build());
     }
 
     @Override

@@ -23,7 +23,7 @@ import butterknife.BindView;
 import me.yokeyword.fragmentation.SupportFragment;
 
 /**
- * Description:
+ * Description:底部菜单的Delegate基类
  *
  * @author Hequn.Lee
  * @date 2017/11/9
@@ -31,9 +31,9 @@ import me.yokeyword.fragmentation.SupportFragment;
 
 public abstract class BaseBottomDelegate extends LatteDelegate implements View.OnClickListener {
 
-    private final ArrayList<BottomItemDelegate> ITEM_DELEGATES = new ArrayList<>();
+    private final ArrayList<BaseBottomItemDelegate> ITEM_DELEGATES = new ArrayList<>();
     private final ArrayList<BottomTabBean> ITEM_BEANS = new ArrayList<>();
-    private final LinkedHashMap<BottomTabBean, BottomItemDelegate> ITEMS = new LinkedHashMap<>();
+    private final LinkedHashMap<BottomTabBean, BaseBottomItemDelegate> ITEMS = new LinkedHashMap<>();
     private int mCurrentDelegate = 0;
     private int mIndexDelegate = 0;
     private int mClickedColor = Color.RED;
@@ -47,7 +47,7 @@ public abstract class BaseBottomDelegate extends LatteDelegate implements View.O
      * @param builder Item构造者
      * @return Bottom集合
      */
-    public abstract LinkedHashMap<BottomTabBean, BottomItemDelegate> setItems(ItemBuilder builder);
+    public abstract LinkedHashMap<BottomTabBean, BaseBottomItemDelegate> setItems(ItemBuilder builder);
 
     /**
      * 设置主页的Delegate的下标
@@ -72,11 +72,11 @@ public abstract class BaseBottomDelegate extends LatteDelegate implements View.O
             mClickedColor = setClickedColor();
         }
         final ItemBuilder builder = ItemBuilder.builder();
-        final LinkedHashMap<BottomTabBean, BottomItemDelegate> items = setItems(builder);
+        final LinkedHashMap<BottomTabBean, BaseBottomItemDelegate> items = setItems(builder);
         ITEMS.putAll(items);
-        for (Map.Entry<BottomTabBean, BottomItemDelegate> item : ITEMS.entrySet()) {
+        for (Map.Entry<BottomTabBean, BaseBottomItemDelegate> item : ITEMS.entrySet()) {
             final BottomTabBean key = item.getKey();
-            final BottomItemDelegate value = item.getValue();
+            final BaseBottomItemDelegate value = item.getValue();
             ITEM_BEANS.add(key);
             ITEM_DELEGATES.add(value);
         }

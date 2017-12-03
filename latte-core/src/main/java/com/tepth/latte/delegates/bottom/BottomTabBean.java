@@ -1,7 +1,7 @@
 package com.tepth.latte.delegates.bottom;
 
 /**
- * Description:
+ * Description:底部按钮Bean
  *
  * @author Hequn.Lee
  * @date 2017/11/9
@@ -9,7 +9,13 @@ package com.tepth.latte.delegates.bottom;
 
 public final class BottomTabBean {
 
+    /**
+     * 图标
+     */
     private final CharSequence ICON;
+    /**
+     * 文字
+     */
     private final CharSequence TITLE;
 
     public BottomTabBean(CharSequence icon, CharSequence title) {

@@ -22,7 +22,7 @@ public class TangApp extends Application {
     public void onCreate() {
         super.onCreate();
         Latte.init(this)
-                .withApiHost("http://192.168.1.23:8088/RestServer/api/")
+                .withApiHost("http://192.168.0.106:80/RestServer/api/")
                 //引入官方图标库
                 .withIcon(new FontAwesomeModule())
                 //引入我自定义的聚划算图标库
@@ -30,7 +30,7 @@ public class TangApp extends Application {
                 .withInterceptor(new DebugInterceptor("test", R.raw.test))
                 .withWeChatAppId("wx8ba572958ee506c3")
                 .withWeChatAppSecret("13a913b9e01201ad214069a6024d7b94")
-                .Configure();//初始化配置文件
+                .configure();//初始化配置文件
         //初始化数据库
         DatabaseManager.getInstance().init(this);
         //配置Bugly
