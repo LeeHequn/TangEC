@@ -11,10 +11,10 @@ import com.tepth.latte.app.AccountManager;
 import com.tepth.latte.app.IUserChecker;
 import com.tepth.latte.delegates.LatteDelegate;
 import com.tepth.latte.ec.R;
-import com.tepth.latte.ui.launcher.ILauncherListener;
-import com.tepth.latte.ui.launcher.LauncherHolderCreator;
-import com.tepth.latte.ui.launcher.OnLauncherFinishTag;
-import com.tepth.latte.ui.launcher.ScollLauncherTag;
+import com.example.latte.ui.launcher.ILauncherListener;
+import com.example.latte.ui.launcher.LauncherHolderCreator;
+import com.example.latte.ui.launcher.OnLauncherFinishTag;
+import com.example.latte.ui.launcher.ScollLauncherTag;
 import com.tepth.latte.utils.storage.LattePreference;
 
 import java.util.ArrayList;

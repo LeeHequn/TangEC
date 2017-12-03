@@ -8,7 +8,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.tepth.latte.ec.R;
-import com.tepth.latte.ui.recycler.RgbValue;
+import com.example.latte.ui.recycler.RgbValue;
 
 /**
  * Description:让Toolbar根据Recycler滑动的变化而变化透明度的控制器

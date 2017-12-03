@@ -12,8 +12,8 @@ import com.tepth.latte.ec.launcher.LauncherDelegate;
 import com.tepth.latte.ec.main.EcBottomDelegate;
 import com.tepth.latte.ec.sign.ISignListener;
 import com.tepth.latte.ec.sign.SignInDelegate;
-import com.tepth.latte.ui.launcher.ILauncherListener;
-import com.tepth.latte.ui.launcher.OnLauncherFinishTag;
+import com.example.latte.ui.launcher.ILauncherListener;
+import com.example.latte.ui.launcher.OnLauncherFinishTag;
 
 import qiu.niorgai.StatusBarCompat;
 

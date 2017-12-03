@@ -14,7 +14,7 @@ import com.tepth.latte.delegates.bottom.BaseBottomItemDelegate;
 import com.tepth.latte.ec.R;
 import com.tepth.latte.ec.R2;
 import com.tepth.latte.ec.main.EcBottomDelegate;
-import com.tepth.latte.ui.refresh.RefreshHandler;
+import com.example.latte.ui.refresh.RefreshHandler;
 import com.tepth.latte.utils.resources.ResourcesUtil;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 

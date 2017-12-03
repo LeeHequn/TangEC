@@ -3,10 +3,10 @@ package com.tepth.latte.ec.main.index;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.tepth.latte.ui.recycler.BaseDataConverter;
-import com.tepth.latte.ui.recycler.ItemType;
-import com.tepth.latte.ui.recycler.MultipleFields;
-import com.tepth.latte.ui.recycler.MultipleItemEntity;
+import com.example.latte.ui.recycler.BaseDataConverter;
+import com.example.latte.ui.recycler.ItemType;
+import com.example.latte.ui.recycler.MultipleFields;
+import com.example.latte.ui.recycler.MultipleItemEntity;
 
 import java.util.ArrayList;
 

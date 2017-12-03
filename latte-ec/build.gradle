@@ -27,6 +27,6 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile project(':latte-core')
+    compile project(':latte-ui')
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 }
