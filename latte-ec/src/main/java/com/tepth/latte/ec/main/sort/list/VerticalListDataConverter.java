@@ -38,9 +38,9 @@ public final class VerticalListDataConverter extends BaseDataConverter {
                     .setField(MultipleFields.TAG, false)
                     .builder();
             dataList.add(entity);
-            //设置第一个Item被选中
-            dataList.get(0).setField(MultipleFields.TAG, true);
         }
-        return null;
+        //设置第一个Item被选中
+        dataList.get(0).setField(MultipleFields.TAG, true);
+        return dataList;
     }
 }
