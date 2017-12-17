@@ -8,13 +8,11 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.tepth.latte.delegates.web.client.WebViewClientImpl;
-import com.tepth.latte.delegates.web.event.EventManager;
-import com.tepth.latte.delegates.web.event.TestEvent;
 import com.tepth.latte.delegates.web.route.RouteKeys;
 import com.tepth.latte.delegates.web.route.Router;
 
 /**
- * Description:WebView的Delagate实现类
+ * Description:WebView的Delegate实现类
  *
  * @author Hequn.Lee
  * @date 2017/12/7
@@ -22,12 +20,18 @@ import com.tepth.latte.delegates.web.route.Router;
 
 public class WebDelegateImpl extends BaseWebDelegate {
 
+    private IPageLoadListener mIPageLoadListener = null;
+
     public static WebDelegateImpl create(String url) {
         final Bundle args = new Bundle();
         args.putString(RouteKeys.URL.name(), url);
         final WebDelegateImpl delegate = new WebDelegateImpl();
         delegate.setArguments(args);
         return delegate;
+    }
+
+    public void setPageLoadListener(IPageLoadListener listener) {
+        this.mIPageLoadListener = listener;
     }
 
     @Override
@@ -41,7 +45,6 @@ public class WebDelegateImpl extends BaseWebDelegate {
             //用原生的方式模拟Web跳转并进行页面加载
             Router.getInstance().loadPage(this, getUrl());
         }
-        EventManager.getInstance().addEvent("test", new TestEvent());
     }
 
     @Override
@@ -56,7 +59,9 @@ public class WebDelegateImpl extends BaseWebDelegate {
 
     @Override
     public WebViewClient initWebViewClient() {
-        return new WebViewClientImpl(this);
+        final WebViewClientImpl client = new WebViewClientImpl(this);
+        client.setPageLoadListener(mIPageLoadListener);
+        return client;
     }
 
     @Override

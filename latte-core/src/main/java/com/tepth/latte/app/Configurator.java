@@ -2,11 +2,14 @@ package com.tepth.latte.app;
 
 import android.app.Activity;
 import android.os.Handler;
+import android.support.annotation.Nullable;
 
 import com.joanzapata.iconify.IconFontDescriptor;
 import com.joanzapata.iconify.Iconify;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
+import com.tepth.latte.delegates.web.event.BaseEvent;
+import com.tepth.latte.delegates.web.event.EventManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -104,6 +107,16 @@ public class Configurator {
 
     public final Configurator withActivity(Activity activity) {
         LATTE_CONFIGS.put(ConfigType.ACTIVITY, activity);
+        return this;
+    }
+
+    public final Configurator withJavasciptInterface(@Nullable String name) {
+        LATTE_CONFIGS.put(ConfigType.JAVASCRIPT_INTERFACE, name);
+        return this;
+    }
+
+    public final Configurator withWebEvent(@Nullable String name, @Nullable BaseEvent event) {
+        EventManager.getInstance().addEvent(name, event);
         return this;
     }
 

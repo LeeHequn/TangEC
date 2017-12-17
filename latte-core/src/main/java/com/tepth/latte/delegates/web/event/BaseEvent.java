@@ -7,25 +7,26 @@ import com.tepth.latte.delegates.LatteDelegate;
 import com.tepth.latte.delegates.web.BaseWebDelegate;
 
 /**
- * Description:
+ * Description:Web和原生交互的基类
  *
  * @author Hequn.Lee
  * @date 2017/12/13
  */
 
+@SuppressWarnings("ALL")
 public abstract class BaseEvent implements IEvent {
 
     private Context mContext = null;
     private String mAction = null;
     private BaseWebDelegate mDelegate = null;
     private String mUrl = null;
-    private WebView mWebView = null;
+//    private WebView mWebView = null;
 
     public Context getContext() {
         return mContext;
     }
 
-    WebView getWebView() {
+    public WebView getWebView() {
         return mDelegate.getWebView();
     }
 
@@ -33,7 +34,7 @@ public abstract class BaseEvent implements IEvent {
         mContext = context;
     }
 
-    String getAction() {
+    public String getAction() {
         return mAction;
     }
 

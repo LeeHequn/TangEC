@@ -43,5 +43,9 @@ public enum ConfigType {
     /**
      * 全局的Handler
      */
-    HANDLER
+    HANDLER,
+    /**
+     * Javascript拦截器
+     */
+    JAVASCRIPT_INTERFACE
 }

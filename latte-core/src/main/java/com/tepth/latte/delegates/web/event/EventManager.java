@@ -5,7 +5,7 @@ import org.greenrobot.greendao.annotation.NotNull;
 import java.util.HashMap;
 
 /**
- * Description:
+ * Description:Web和原生交互的方法Manager
  *
  * @author Hequn.Lee
  * @date 2017/12/13

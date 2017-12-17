@@ -7,7 +7,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 /**
- * Description:
+ * Description:对WebView进行初始化的类
  *
  * @author Hequn.Lee
  * @date 2017/12/13

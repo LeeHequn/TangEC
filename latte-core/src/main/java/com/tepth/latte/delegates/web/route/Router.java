@@ -12,15 +12,21 @@ import com.tepth.latte.delegates.web.BaseWebDelegate;
 import com.tepth.latte.delegates.web.WebDelegateImpl;
 
 /**
- * Description:
+ * Description:Web路由类
  *
  * @author Hequn.Lee
  * @date 2017/12/13
  */
 
+@SuppressWarnings("ALL")
 public class Router {
     private Router() {
     }
+
+    /**
+     * 如果action是以tel:开头的，询问用户是否拨打电话
+     */
+    private static final String PHONE_KEYWORDS = "tel:";
 
     private static class Holder {
         private static final Router INSTANCE = new Router();
@@ -32,7 +38,7 @@ public class Router {
 
     public final boolean handlerWebUrl(BaseWebDelegate delegate, String url) {
         //如果是电话协议
-        if (url.contains("tel:")) {
+        if (url.contains(PHONE_KEYWORDS)) {
             callPhone(delegate.getContext(), url);
             return true;
         }

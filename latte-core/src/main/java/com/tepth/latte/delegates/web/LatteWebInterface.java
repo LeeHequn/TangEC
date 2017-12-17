@@ -7,7 +7,7 @@ import com.tepth.latte.delegates.web.event.BaseEvent;
 import com.tepth.latte.delegates.web.event.EventManager;
 
 /**
- * Description:
+ * Description:Web和原生交互的接口类
  *
  * @author Hequn.Lee
  * @date 2017/12/7

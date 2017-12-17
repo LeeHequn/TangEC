@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.webkit.WebView;
 
+import com.tepth.latte.app.ConfigType;
+import com.tepth.latte.app.Latte;
 import com.tepth.latte.delegates.LatteDelegate;
 import com.tepth.latte.delegates.web.route.RouteKeys;
 
@@ -12,7 +14,7 @@ import java.lang.ref.ReferenceQueue;
 import java.lang.ref.WeakReference;
 
 /**
- * Description:WebView的Delagate基类
+ * Description:WebView的Delegate基类
  *
  * @author Hequn.Lee
  * @date 2017/12/7
@@ -58,7 +60,8 @@ public abstract class BaseWebDelegate extends LatteDelegate implements IWebViewI
                 mWebView = initializer.initWebView(mWebView);
                 mWebView.setWebViewClient(initializer.initWebViewClient());
                 mWebView.setWebChromeClient(initializer.initWebChromeClient());
-                mWebView.addJavascriptInterface(LatteWebInterface.create(this), "latte");
+                final String name = Latte.getConfiguration(ConfigType.JAVASCRIPT_INTERFACE);
+                mWebView.addJavascriptInterface(LatteWebInterface.create(this), name);
                 mIsWebViewAvailable = true;
             } else {
                 throw new NullPointerException("Initializer is null!");

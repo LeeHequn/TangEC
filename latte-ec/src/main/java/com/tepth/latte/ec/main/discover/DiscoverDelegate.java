@@ -5,17 +5,19 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.tepth.latte.delegates.bottom.BaseBottomItemDelegate;
+import com.tepth.latte.delegates.web.IPageLoadListener;
 import com.tepth.latte.delegates.web.WebDelegateImpl;
 import com.tepth.latte.ec.R;
+import com.tepth.latte.utils.log.LatteLogger;
 
 /**
- * Description:
+ * Description:发现频道的Delegate
  *
  * @author Hequn.Lee
  * @date 2017/12/7
  */
 
-public class DiscoverDeletage extends BaseBottomItemDelegate {
+public class DiscoverDelegate extends BaseBottomItemDelegate implements IPageLoadListener {
     @Override
     public Object setLayout() {
         return R.layout.delegate_discover;
@@ -31,6 +33,17 @@ public class DiscoverDeletage extends BaseBottomItemDelegate {
         super.onLazyInitView(savedInstanceState);
         final WebDelegateImpl delegate = WebDelegateImpl.create("index.html");
         delegate.setTopDelegate(this.getParentDelegate());
+        delegate.setPageLoadListener(this);
         loadRootFragment(R.id.web_discovery_container, delegate);
+    }
+
+    @Override
+    public void onLoadStart() {
+        LatteLogger.i("WebView", "Start loading page!");
+    }
+
+    @Override
+    public void onLoadEnd() {
+        LatteLogger.i("WebView", "Finish loading page!");
     }
 }

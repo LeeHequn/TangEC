@@ -5,12 +5,13 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 
 /**
- * Description:
+ * Description:WebChromeClient实现类
  *
  * @author Hequn.Lee
  * @date 2017/12/13
  */
 
+@SuppressWarnings("ALL")
 public class WebChromeClientImpl extends WebChromeClient {
 
     @Override
