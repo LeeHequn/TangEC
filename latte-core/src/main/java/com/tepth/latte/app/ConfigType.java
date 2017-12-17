@@ -47,5 +47,9 @@ public enum ConfigType {
     /**
      * Javascript拦截器
      */
-    JAVASCRIPT_INTERFACE
+    JAVASCRIPT_INTERFACE,
+    /**
+     * Web主地址
+     */
+    WEB_HOST
 }

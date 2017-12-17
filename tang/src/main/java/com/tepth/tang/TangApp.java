@@ -5,6 +5,7 @@ import android.app.Application;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.tepth.latte.app.Latte;
+import com.tepth.latte.net.interceptors.CookieInterceptors;
 import com.tepth.tang.event.TestEvent;
 import com.tepth.latte.ec.database.DatabaseManager;
 import com.tepth.latte.ec.icon.FontEcModule;
@@ -32,6 +33,7 @@ public class TangApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        //初始化配置文件
         Latte.init(this)
                 .withApiHost(HOME_IP_ADDRESS)
                 //引入官方图标库
@@ -43,7 +45,10 @@ public class TangApp extends Application {
                 .withWeChatAppSecret("13a913b9e01201ad214069a6024d7b94")
                 .withJavasciptInterface("latte")
                 .withWebEvent(TestEvent.EVENT_NAME, new TestEvent())
-                .configure();//初始化配置文件
+                //添加Cookie拦截器
+                .withWebHost("https://baidu.com/")
+                .withInterceptor(new CookieInterceptors())
+                .configure();
         //初始化数据库
         DatabaseManager.getInstance().init(this);
         //配置Bugly

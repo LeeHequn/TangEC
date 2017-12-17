@@ -18,7 +18,7 @@ import com.tepth.latte.delegates.web.WebDelegateImpl;
  * @date 2017/12/13
  */
 
-@SuppressWarnings("ALL")
+
 public class Router {
     private Router() {
     }
@@ -69,7 +69,7 @@ public class Router {
     }
 
     public final void loadPage(BaseWebDelegate delegate, String url) {
-        loadLocalPage(delegate.getWebView(), url);
+        loadPage(delegate.getWebView(), url);
     }
 
     private void callPhone(Context context, String uri) {
