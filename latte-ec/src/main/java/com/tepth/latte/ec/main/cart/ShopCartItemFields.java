@@ -1,7 +1,7 @@
 package com.tepth.latte.ec.main.cart;
 
 /**
- * Description:
+ * Description:购物车Item的元素枚举
  *
  * @author Hequn.Lee
  * @date 2017/12/27

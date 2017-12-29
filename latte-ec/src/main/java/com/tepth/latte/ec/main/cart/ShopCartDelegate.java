@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 
 /**
- * Description:
+ * Description:购物车Delegate
  *
  * @author Hequn.Lee
  * @date 2017/12/18

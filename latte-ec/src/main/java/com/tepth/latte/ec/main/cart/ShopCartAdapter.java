@@ -16,7 +16,7 @@ import com.tepth.latte.ec.R;
 import java.util.List;
 
 /**
- * Description:
+ * Description:购物车RecyclerView适配器
  *
  * @author Hequn.Lee
  * @date 2017/12/27

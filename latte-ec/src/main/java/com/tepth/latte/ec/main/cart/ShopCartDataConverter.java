@@ -10,7 +10,7 @@ import com.example.latte.ui.recycler.MultipleItemEntity;
 import java.util.ArrayList;
 
 /**
- * Description:
+ * Description:购物车数据转换器
  *
  * @author Hequn.Lee
  * @date 2017/12/26
