@@ -23,5 +23,9 @@ public enum ShopCartItemFields {
     /**
      * 购物车ITEM的价格
      */
-    PRICE
+    PRICE,
+    /**
+     * 是否被点击
+     */
+    IS_SELECTED
 }

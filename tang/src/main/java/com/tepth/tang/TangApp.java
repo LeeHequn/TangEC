@@ -35,7 +35,7 @@ public class TangApp extends Application {
         super.onCreate();
         //初始化配置文件
         Latte.init(this)
-                .withApiHost(WORK_IP_ADDRESS)
+                .withApiHost(HOME_IP_ADDRESS)
                 //引入官方图标库
                 .withIcon(new FontAwesomeModule())
                 //引入我自定义的聚划算图标库
