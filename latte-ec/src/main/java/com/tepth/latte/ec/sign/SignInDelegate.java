@@ -1,6 +1,6 @@
 package com.tepth.latte.ec.sign;
 
-import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
@@ -39,10 +39,10 @@ public class SignInDelegate extends LatteDelegate {
     private ISignListener mISignListener = null;
 
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        if (activity instanceof ISignListener) {
-            mISignListener = (ISignListener) activity;
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof ISignListener) {
+            mISignListener = (ISignListener) context;
         }
     }
 
@@ -84,7 +84,7 @@ public class SignInDelegate extends LatteDelegate {
 
     @OnClick(R2.id.tv_link_sign_up)
     void onClickLink() {
-        start(new SignUpDelegate());
+        getSupportDelegate().start(new SignUpDelegate());
     }
 
     private boolean checkForm() {

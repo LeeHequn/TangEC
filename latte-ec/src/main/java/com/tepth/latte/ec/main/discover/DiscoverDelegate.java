@@ -34,7 +34,7 @@ public class DiscoverDelegate extends BaseBottomItemDelegate implements IPageLoa
         final WebDelegateImpl delegate = WebDelegateImpl.create("index.html");
         delegate.setTopDelegate(this.getParentDelegate());
         delegate.setPageLoadListener(this);
-        loadRootFragment(R.id.web_discovery_container, delegate);
+        getSupportDelegate().loadRootFragment(R.id.web_discovery_container, delegate);
     }
 
     @Override

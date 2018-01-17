@@ -27,5 +27,9 @@ public enum ShopCartItemFields {
     /**
      * 是否被点击
      */
-    IS_SELECTED
+    IS_SELECTED,
+    /**
+     * 数据位置
+     */
+    POSITION
 }

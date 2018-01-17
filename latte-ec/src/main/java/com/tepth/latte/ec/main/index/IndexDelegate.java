@@ -8,13 +8,16 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.DecelerateInterpolator;
 
+import com.example.latte.ui.recycler.BaseHidingScrollListener;
+import com.example.latte.ui.refresh.RefreshHandler;
 import com.joanzapata.iconify.widget.IconTextView;
 import com.tepth.latte.delegates.bottom.BaseBottomItemDelegate;
 import com.tepth.latte.ec.R;
 import com.tepth.latte.ec.R2;
 import com.tepth.latte.ec.main.EcBottomDelegate;
-import com.example.latte.ui.refresh.RefreshHandler;
 import com.tepth.latte.utils.resources.ResourcesUtil;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
@@ -49,8 +52,6 @@ public class IndexDelegate extends BaseBottomItemDelegate {
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
         mRefreshHandler = RefreshHandler.create(mRefreshLayout, mRecyclerView, new IndexDataConvert());
-
-
     }
 
     /**
@@ -71,11 +72,23 @@ public class IndexDelegate extends BaseBottomItemDelegate {
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.addItemDecoration(new HorizontalDividerItemDecoration
                 .Builder(getContext())
-                .color(R.color.app_background)
+                .color(R.color.app_main)
                 .size(3)
                 .build());
         final EcBottomDelegate ecBottomDelegate = getParentDelegate();
         mRecyclerView.addOnItemTouchListener(IndexItemClickListener.create(ecBottomDelegate));
+        mRecyclerView.addOnScrollListener(new BaseHidingScrollListener() {
+
+            @Override
+            public void onHide() {
+                mToolbar.animate().translationY(-mToolbar.getHeight()).setInterpolator(new AccelerateInterpolator(2));
+            }
+
+            @Override
+            public void onShow() {
+                mToolbar.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2));
+            }
+        });
     }
 
     @Override

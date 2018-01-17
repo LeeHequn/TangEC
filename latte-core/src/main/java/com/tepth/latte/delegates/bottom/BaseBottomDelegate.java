@@ -20,7 +20,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import butterknife.BindView;
-import me.yokeyword.fragmentation.SupportFragment;
+import me.yokeyword.fragmentation.ISupportFragment;
 
 /**
  * Description:底部菜单的Delegate基类
@@ -29,6 +29,7 @@ import me.yokeyword.fragmentation.SupportFragment;
  * @date 2017/11/9
  */
 
+@SuppressWarnings("ALL")
 public abstract class BaseBottomDelegate extends LatteDelegate implements View.OnClickListener {
 
     private final ArrayList<BaseBottomItemDelegate> ITEM_DELEGATES = new ArrayList<>();
@@ -114,8 +115,8 @@ public abstract class BaseBottomDelegate extends LatteDelegate implements View.O
             }
         }
         //获取Fragment数组
-        final SupportFragment[] delegateArray = ITEM_DELEGATES.toArray(new SupportFragment[size]);
-        loadMultipleRootFragment(R.id.bottom_bar_delegate_container, mIndexDelegate, delegateArray);
+        final ISupportFragment[] delegateArray = ITEM_DELEGATES.toArray(new ISupportFragment[size]);
+        getSupportDelegate().loadMultipleRootFragment(R.id.bottom_bar_delegate_container, mIndexDelegate, delegateArray);
     }
 
     /**
@@ -142,7 +143,9 @@ public abstract class BaseBottomDelegate extends LatteDelegate implements View.O
         final AppCompatTextView itemTitle = (AppCompatTextView) item.getChildAt(1);
         itemTitle.setTextColor(mClickedColor);
         //先隐藏上一个Fragment，再给新的item赋值
-        showHideFragment(ITEM_DELEGATES.get(tag), ITEM_DELEGATES.get(mIndexDelegate));
+        getSupportDelegate().showHideFragment(ITEM_DELEGATES.get(tag), ITEM_DELEGATES.get(mIndexDelegate));
         mIndexDelegate = tag;
     }
+
+
 }

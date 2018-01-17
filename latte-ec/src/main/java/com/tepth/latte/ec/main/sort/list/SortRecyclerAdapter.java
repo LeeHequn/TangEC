@@ -17,6 +17,8 @@ import com.tepth.latte.utils.resources.ResourcesUtil;
 
 import java.util.List;
 
+import me.yokeyword.fragmentation.SupportHelper;
+
 /**
  * Description:分类页面左侧竖直菜单Recycler适配器
  *
@@ -99,9 +101,10 @@ public class SortRecyclerAdapter extends MultipleRecyclerAdapter {
      * @param delegate 要切换的Fragment
      */
     private void switchContent(ContentDelegate delegate) {
-        final LatteDelegate contentDelegate = DELEGATE.findChildFragment(ContentDelegate.class);
+        final LatteDelegate contentDelegate =
+                SupportHelper.findFragment(DELEGATE.getChildFragmentManager(), ContentDelegate.class);
         if (contentDelegate != null) {
-            contentDelegate.replaceFragment(delegate, false);
+            contentDelegate.getSupportDelegate().replaceFragment(delegate, false);
         }
     }
 }

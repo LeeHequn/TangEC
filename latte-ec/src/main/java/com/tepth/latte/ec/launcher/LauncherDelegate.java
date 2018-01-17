@@ -1,19 +1,19 @@
 package com.tepth.latte.ec.launcher;
 
-import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
 
+import com.example.latte.ui.launcher.ILauncherListener;
+import com.example.latte.ui.launcher.OnLauncherFinishTag;
+import com.example.latte.ui.launcher.ScollLauncherTag;
 import com.tepth.latte.app.AccountManager;
 import com.tepth.latte.app.IUserChecker;
 import com.tepth.latte.delegates.LatteDelegate;
 import com.tepth.latte.ec.R;
 import com.tepth.latte.ec.R2;
-import com.example.latte.ui.launcher.ILauncherListener;
-import com.example.latte.ui.launcher.OnLauncherFinishTag;
-import com.example.latte.ui.launcher.ScollLauncherTag;
 import com.tepth.latte.utils.storage.LattePreference;
 import com.tepth.latte.utils.timer.BaseTimerTask;
 import com.tepth.latte.utils.timer.ITimerListener;
@@ -59,10 +59,10 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
     }
 
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        if (activity instanceof ILauncherListener) {
-            mILauncherListener = (ILauncherListener) activity;
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof ILauncherListener) {
+            mILauncherListener = (ILauncherListener) context;
         }
     }
 
@@ -81,7 +81,7 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
      */
     private void checkIsShowScroll() {
         if (!LattePreference.getAppFlag(ScollLauncherTag.HAS_FIRST_LAUNCHERAPP.name())) {
-            start(new LauncherScrollDelegate(), SINGLETASK);
+            getSupportDelegate().start(new LauncherScrollDelegate(), SINGLETASK);
         } else {
             //检查用户是否登陆
             AccountManager.checkAccount(new IUserChecker() {

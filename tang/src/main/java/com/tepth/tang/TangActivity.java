@@ -5,15 +5,14 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.widget.Toast;
 
+import com.example.latte.ui.launcher.ILauncherListener;
+import com.example.latte.ui.launcher.OnLauncherFinishTag;
 import com.tepth.latte.activities.BaseActivity;
 import com.tepth.latte.app.Latte;
 import com.tepth.latte.delegates.LatteDelegate;
 import com.tepth.latte.ec.launcher.LauncherDelegate;
 import com.tepth.latte.ec.main.EcBottomDelegate;
 import com.tepth.latte.ec.sign.ISignListener;
-import com.tepth.latte.ec.sign.SignInDelegate;
-import com.example.latte.ui.launcher.ILauncherListener;
-import com.example.latte.ui.launcher.OnLauncherFinishTag;
 
 import qiu.niorgai.StatusBarCompat;
 
@@ -44,13 +43,13 @@ public class TangActivity extends BaseActivity implements ISignListener, ILaunch
     @Override
     public void onSignInSuccess() {
         Toast.makeText(this, "登陆成功", Toast.LENGTH_SHORT).show();
-        startWithPop(new EcBottomDelegate());
+        getSupportDelegate().startWithPop(new EcBottomDelegate());
     }
 
     @Override
     public void onSignUpSuccess() {
         Toast.makeText(this, "注册成功", Toast.LENGTH_SHORT).show();
-        startWithPop(new EcBottomDelegate());
+        getSupportDelegate().startWithPop(new EcBottomDelegate());
     }
 
     @Override
@@ -58,11 +57,11 @@ public class TangActivity extends BaseActivity implements ISignListener, ILaunch
         switch (tag) {
             case SIGNED:
                 Toast.makeText(this, "启动结束了，用户登陆了", Toast.LENGTH_SHORT).show();
-                startWithPop(new EcBottomDelegate());
+                getSupportDelegate().startWithPop(new EcBottomDelegate());
                 break;
             case NOT_SIGNED:
                 Toast.makeText(this, "启动结束了，用户没登陆", Toast.LENGTH_SHORT).show();
-                startWithPop(new SignInDelegate());
+                getSupportDelegate().startWithPop(new EcBottomDelegate());
                 break;
             default:
                 break;

@@ -7,8 +7,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.tepth.latte.ec.R;
 import com.example.latte.ui.recycler.RgbValue;
+import com.tepth.latte.ec.R;
 
 /**
  * Description:让Toolbar根据Recycler滑动的变化而变化透明度的控制器
@@ -71,5 +71,10 @@ public class TranslucentBehavior extends CoordinatorLayout.Behavior<Toolbar> {
             //当滑动过快时，恢复原来的颜色
             child.setBackgroundColor(Color.rgb(RGB_VALUE.red(), RGB_VALUE.green(), RGB_VALUE.blue()));
         }
+    }
+
+    @Override
+    public boolean onNestedFling(CoordinatorLayout coordinatorLayout, Toolbar child, View target, float velocityX, float velocityY, boolean consumed) {
+        return true;
     }
 }

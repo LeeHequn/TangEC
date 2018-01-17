@@ -108,7 +108,9 @@ public enum EcIcons implements Icon {
     //礼物
     icon_liwu('\ue685'),
     //语音
-    icon_yuyin('\ue687');
+    icon_yuyin('\ue687'),
+    //支付宝
+    icon_ali_pay('\ue615');
 
     private char character;
 
