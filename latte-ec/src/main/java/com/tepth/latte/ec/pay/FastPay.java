@@ -9,8 +9,11 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.alibaba.fastjson.JSON;
 import com.tepth.latte.delegates.LatteDelegate;
 import com.tepth.latte.ec.R;
+import com.tepth.latte.net.RestClient;
+import com.tepth.latte.net.callback.ISuccess;
 
 /**
  * Description:
@@ -54,6 +57,21 @@ public class FastPay implements View.OnClickListener {
             window.findViewById(R.id.btn_dialog_pay_wechat).setOnClickListener(this);
             window.findViewById(R.id.btn_dialog_pay_cancel).setOnClickListener(this);
         }
+    }
+
+    public final void alPay(int orderID) {
+        final String payUrl = "";
+        RestClient.builder()
+                .url(payUrl)
+                .success(new ISuccess() {
+                    @Override
+                    public void onSuccess(String response) {
+                        final String paySign = JSON.parseObject(response).getString("result");
+                    }
+                })
+                .builder()
+                .post();
+
     }
 
     @Override
