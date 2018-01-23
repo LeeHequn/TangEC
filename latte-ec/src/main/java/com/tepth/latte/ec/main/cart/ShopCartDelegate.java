@@ -11,18 +11,23 @@ import android.support.v7.widget.ViewStubCompat;
 import android.view.View;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
 import com.example.latte.ui.recycler.MultipleItemEntity;
 import com.joanzapata.iconify.widget.IconTextView;
 import com.tepth.latte.delegates.bottom.BaseBottomItemDelegate;
 import com.tepth.latte.ec.R;
 import com.tepth.latte.ec.R2;
 import com.tepth.latte.ec.pay.FastPay;
+import com.tepth.latte.ec.pay.IAlPayResultListener;
 import com.tepth.latte.net.RestClient;
+import com.tepth.latte.net.callback.IFailure;
 import com.tepth.latte.net.callback.ISuccess;
+import com.tepth.latte.utils.log.LatteLogger;
 import com.tepth.latte.utils.resources.ResourcesUtil;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.WeakHashMap;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -35,7 +40,7 @@ import butterknife.OnClick;
  */
 
 @SuppressWarnings("ALL")
-public class ShopCartDelegate extends BaseBottomItemDelegate implements ISuccess, ICartItemListener {
+public class ShopCartDelegate extends BaseBottomItemDelegate implements ISuccess, ICartItemListener, IAlPayResultListener {
 
     private ShopCartAdapter mAdapter = null;
     /**
@@ -130,14 +135,45 @@ public class ShopCartDelegate extends BaseBottomItemDelegate implements ISuccess
 
     @OnClick(R2.id.tv_shop_cart_pay)
     void onClickPay() {
-        FastPay.create(this).beginPayDialog();
+        createOrder();
     }
 
     /**
      * 创建订单，注意，和支付没有关系
      */
     private void createOrder() {
-
+        final String orderUrl = "http://app.api.zanzuanshi.com/api/v1/peyment";
+        final WeakHashMap<String, Object> orderParams = new WeakHashMap<>();
+        orderParams.put("userid", 264392);
+        orderParams.put("amount", 0.01);
+        orderParams.put("comment", "测试支付");
+        orderParams.put("type", 1);
+        orderParams.put("ordertype", 0);
+        orderParams.put("isanonymous", true);
+        orderParams.put("followeduser", 0);
+        RestClient.builder()
+                .url(orderUrl)
+                .loader(getContext())
+                .params(orderParams)
+                .success(new ISuccess() {
+                    @Override
+                    public void onSuccess(String response) {
+                        LatteLogger.d("ORDER", response);
+                        final int orderId = JSON.parseObject(response).getInteger("result");
+                        FastPay.create(ShopCartDelegate.this)
+                                .setPayResultListener(ShopCartDelegate.this)
+                                .setOrderId(orderId)
+                                .beginPayDialog();
+                    }
+                })
+                .failure(new IFailure() {
+                    @Override
+                    public void onFailure() {
+                        Toast.makeText(_mActivity, "支付后台服务未开启", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .builder()
+                .post();
     }
 
     @SuppressLint("RestrictedApi")
@@ -198,5 +234,30 @@ public class ShopCartDelegate extends BaseBottomItemDelegate implements ISuccess
     public void onItemClick(double itemTotalPrice) {
         final double price = mAdapter.getTotalPrice();
         mTvTotalPrice.setText(String.valueOf(price));
+    }
+
+    @Override
+    public void onPaySuccess() {
+
+    }
+
+    @Override
+    public void onPaying() {
+
+    }
+
+    @Override
+    public void onPayFail() {
+
+    }
+
+    @Override
+    public void onPayCancel() {
+
+    }
+
+    @Override
+    public void onPayConnectError() {
+
     }
 }

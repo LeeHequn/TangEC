@@ -1,7 +1,7 @@
 package com.tepth.latte.ec.pay;
 
 /**
- * Description:
+ * Description:支付宝监听接口
  *
  * @author Hequn.Lee
  * @date 2018/1/16
