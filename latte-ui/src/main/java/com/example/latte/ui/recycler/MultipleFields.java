@@ -17,6 +17,10 @@ public enum MultipleFields {
      */
     TEXT,
     /**
+     * 标题
+     */
+    TITLE,
+    /**
      * 图片网址
      */
     IMAGE_URL,
